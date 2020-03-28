@@ -11,7 +11,7 @@ RUN chmod +x /start.sh
 
 RUN apk add python3 && \
     apk add curl && \
-    pip3.8 install flask gunicorn requests
+    pip3.8 install flask requests
 
-EXPOSE 30001
-ENTRYPOINT ["/bin/sh", "+x", "/start.sh"]
+RUN export FLASK_APP=/app/src/countries.py
+CMD flask run --host=0.0.0.0:5000
